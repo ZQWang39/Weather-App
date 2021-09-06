@@ -1,0 +1,28 @@
+.dashboard{
+    .input{
+        label{
+            color:beige;
+        }
+        input{
+            width:13rem;
+            height:1.5rem;
+            font-size:1rem;
+            text-indent: 0.2rem;
+            margin: 1rem auto;
+            border-radius: 0.3rem;  
+            outline: none;
+            border:none;
+        }
+        button{
+            padding:0.5rem 1.5rem;
+            background-color:rgba(29, 28, 28, 0.76);
+            color:white;
+            cursor: pointer;
+            border:none;
+            border-radius: 0.4rem;
+            &:hover{
+                background-color:black
+            }
+        }
+    }
+}

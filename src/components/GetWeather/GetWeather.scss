@@ -1,0 +1,29 @@
+.dashboard{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    .input{
+        text-align: center;
+        h2{
+            color:beige;
+        }
+    }
+    .display-weather{
+        width:100%;
+        ul{
+            display:flex;
+            justify-content: space-evenly;
+            margin:auto;
+            list-style: none;
+            width:75%;
+            li{
+                width:8rem;
+                height:8rem;
+                padding-top: 0.3rem;
+                text-align:center;
+                background-color: rgba(170, 165, 165, 0.397);
+                border-radius: 0.5rem;
+            }
+        }
+    }
+}
