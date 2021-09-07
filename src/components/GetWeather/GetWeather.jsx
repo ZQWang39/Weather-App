@@ -2,8 +2,9 @@
 import React, {useState, useEffect} from 'react'
 import GetLocation from '../GetLocation/GetLocation'
 import axios from 'axios'
-import {CircularProgress} from '@material-ui/core'
+//import {CircularProgress} from '@material-ui/core'
 import './GetWeather.scss'
+
 
 const GetWeather = () => {
 
@@ -11,8 +12,9 @@ const GetWeather = () => {
     const [locationKey, setLocationKey] = useState('');
     const [cityDetails, setCityDetails] = useState('');
 
-    const apiKey = process.env.REACT_APP_API_KEY;
-    console.log(apiKey)
+    const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+    
+    
     // const locationKey = '22889'
 
  const handleCityInfo=(cityInfo) => {
@@ -73,6 +75,7 @@ const GetWeather = () => {
                 <GetLocation cityFound = {handleCityInfo}/>
                 <h2>{cityDetails}</h2>
             </div>
+
             <div className='display-weather'>
               {(weatherData)?(<ul>
                    {weatherData.map((item, index)=>(
@@ -83,9 +86,7 @@ const GetWeather = () => {
                         {item.min}℃/{item.max}℃
                         </li>
                     ) )}
-                </ul>):(
-                    <CircularProgress />
-                )
+                </ul>):null
               }
             </div>
             

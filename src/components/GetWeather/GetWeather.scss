@@ -4,6 +4,7 @@
     align-items: center;
     .input{
         text-align: center;
+        margin-top: 0.5rem;
         h2{
             color:beige;
         }
@@ -13,6 +14,7 @@
         ul{
             display:flex;
             justify-content: space-evenly;
+            flex-wrap: wrap;
             margin:auto;
             list-style: none;
             width:75%;

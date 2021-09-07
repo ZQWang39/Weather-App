@@ -3,9 +3,9 @@ import './Header.scss'
 
 const Header = () => {
     return (
-        <div className='header'>
+        <header >
             <h1>Weather App</h1>
-        </div>
+        </header>
     )
 }
 
