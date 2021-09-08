@@ -1,0 +1,29 @@
+@import '../../variable.scss';
+.container{
+    margin:auto;
+    width:45%;
+    .display-board{
+        width:100%;
+        margin: auto;
+        background-color: $background-color;
+        border-radius: 0.5rem;
+        .location{
+            padding-top: 0.5rem;
+            text-align:center;       
+        }
+        .weather{
+            display:flex;
+            justify-content:space-evenly;
+            padding-bottom:0.5rem ;
+            &__main{
+                width:45%;
+                text-align:center;   
+            }
+            &__sub{
+                width:45%;
+                text-align:center;
+                padding-top:0.5rem;
+            }
+        }   
+    }
+}

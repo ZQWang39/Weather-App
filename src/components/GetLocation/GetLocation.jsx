@@ -22,7 +22,6 @@ const GetLocation = ({cityFound, isScriptLoaded, isScriptLoadSucceed}) => {
              if(location){
                  if(coordinates.lat&&coordinates.lng){
                     const {data} = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${coordinates.lat}%2C${coordinates.lng}&language=en-us&details=true&toplevel=true`)
-                    console.log(data)
                     const locationKey = data.Key;
                     const cityName = data.LocalizedName;
                     const administrativeArea = data.AdministrativeArea.LocalizedName;
