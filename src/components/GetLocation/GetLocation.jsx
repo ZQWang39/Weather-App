@@ -3,13 +3,14 @@ import React, { useState} from 'react'
 import axios from 'axios'
 import './GetLocation.scss'
 import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete'
+import scriptLoader from 'react-async-script-loader'
 
-const GetLocation = ({cityFound}) => {
-
+const GetLocation = ({cityFound, isScriptLoaded, isScriptLoadSucceed}) => {
     const [location, setlocation] = useState('');
     const [coordinates, setCoordinates] = useState({lat:null, lng:null});
     const [errorMessage, setErrorMessage] = useState('')
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+
 
     const handleSelect = async(value)=>{
     const results = await geocodeByAddress(value)
@@ -17,7 +18,6 @@ const GetLocation = ({cityFound}) => {
      setCoordinates(latLng)
      setlocation(value)
     }
-    
     const handleClick = async()=>{
              if(location){
                  if(coordinates.lat&&coordinates.lng){
@@ -41,30 +41,33 @@ const GetLocation = ({cityFound}) => {
                 setErrorMessage("Please enter a city name!")
             }  
         }
-    
 
+    if(isScriptLoaded&isScriptLoadSucceed){
     return (
-        <div>
+        <div className = 'container'>
             <PlacesAutocomplete  value = {location} onChange = {setlocation} onSelect = {handleSelect}>
                {({getInputProps, suggestions, getSuggestionItemProps, loading}) => 
                <div>
                    <input {...getInputProps({placeholder: 'eg. Sydney',className: 'location-input'})}/>
-                   <div className="container">
+                   <ul className="suggestion-container">
                        {suggestions.map((suggestion,index) =>{
                            return (
-                               <div className="suggestion" key={index} {...getSuggestionItemProps(suggestion)}>
+                               <li className="suggestion" key={index} {...getSuggestionItemProps(suggestion)}>
                                    {suggestion.description}
-                               </div>
+                               </li>
                            )
                        })}
-                   </div>
+                   </ul>
 
                </div>}  
             </PlacesAutocomplete>
-            <div className = "error-message">{errorMessage}</div> 
+            <div className = "error">{errorMessage}</div> 
             <button onClick={()=>handleClick(location)}>SEARCH</button>
         </div>
     )
+  }else{
+      return <div></div>
+  }
 }
 
-export default GetLocation
+export default scriptLoader([`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`])(GetLocation)

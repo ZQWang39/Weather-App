@@ -1,12 +1,14 @@
+@import '../../variable.scss';
 .dashboard{
     display:flex;
     flex-direction: column;
     align-items: center;
     .input{
+        width: 100%;
         text-align: center;
         margin-top: 0.5rem;
         h2{
-            color:beige;
+            color:$header;
         }
     }
     .display-weather{
@@ -24,7 +26,7 @@
                 height:8rem;
                 padding-top: 0.3rem;
                 text-align:center;
-                background-color: rgba(170, 165, 165, 0.397);
+                background-color: $background-color;
                 border-radius: 0.5rem;
             }
         }

@@ -1,8 +1,8 @@
-.dashboard{
-    .input{
-      
+@import '../../variable.scss';
+.container{
+    width:100%;
         .location-input{
-            width:15rem;
+            width:80%;
             height:2rem;
             font-size:1rem;
             text-indent: 0.2rem;
@@ -10,33 +10,37 @@
             outline: none;
             border:none;  
         }
-       
-        .suggestion{
+        .suggestion-container{
             margin-top:0;
-            width:auto;
-            height:2rem;
-            background-color:rgba(170, 165, 165, 0.397);
+        .suggestion{
+            width:90%;
+            margin-top:0;
+            list-style: none;
+            line-height: 1.2rem;
+            padding-top: 0.5rem;
+            height:auto;
+            background-color:$background-color;
             cursor: pointer;
             &:hover{
-                background-color: rgba(170, 165, 165, 0.753);
+                background-color: $background-color-hover;
             }
-        }
-        .error-message{
-            color:red;
+         }
+       }
+        .error{
+            color:$error-colcor;
             margin: 1rem auto;
             font-weight: bold;
         }
     
         button{
             padding:0.5rem 1.5rem;
-            background-color:rgba(29, 28, 28, 0.76);
-            color:white;
+            background-color:$button-color;
+            color:$header;
             cursor: pointer;
             border:none;
             border-radius: 0.4rem;
             &:hover{
-                background-color:black
+                background-color:$text-color
             }
         }
     }
-}

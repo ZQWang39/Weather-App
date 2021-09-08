@@ -2,7 +2,6 @@
 import React, {useState, useEffect} from 'react'
 import GetLocation from '../GetLocation/GetLocation'
 import axios from 'axios'
-//import {CircularProgress} from '@material-ui/core'
 import './GetWeather.scss'
 
 
@@ -11,11 +10,8 @@ const GetWeather = () => {
     const [weatherData, setWeatherData] = useState('');
     const [locationKey, setLocationKey] = useState('');
     const [cityDetails, setCityDetails] = useState('');
-
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
     
-    
-    // const locationKey = '22889'
 
  const handleCityInfo=(cityInfo) => {
      setLocationKey(cityInfo.locationKey)
@@ -36,7 +32,6 @@ const GetWeather = () => {
          const numString = num.toString();
          return numString.length === 1? '0' + numString : numString;
      }
-   
     
      const getTime = (d)=>{
         const time = d.split(" ");
@@ -46,7 +41,6 @@ const GetWeather = () => {
           day: time[2]
         }
     }
-
     
      const formatWeatherData = (items) => {
         return items.map(item => {
@@ -62,10 +56,8 @@ const GetWeather = () => {
                 weather:weather,
                 icon:icon,
                 max:max,
-                min:min
-                
+                min:min   
             }
-           
         })
     }
 

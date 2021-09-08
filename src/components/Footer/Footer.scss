@@ -1,18 +1,14 @@
+@import '../../variable.scss';
 
 footer{
     position: absolute;
     bottom: 0;
     width:100%;
-    background-color:rgba(170, 165, 165, 0.397);
+    background-color:$background-color;
     text-align:center;
     .logo{
         width:10rem;
         height:2rem;
     }
-    a{
-        text-decoration:none;
-        color:black;
-    }
-
 }
 
