@@ -7,6 +7,7 @@ import './GetLocation.scss'
 const GetLocation = ({cityFound}) => {
 
     const [location, setlocation] = useState('');
+    const [errorMessage, setErrorMessage] = useState('')
 
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
@@ -19,21 +20,21 @@ const GetLocation = ({cityFound}) => {
     const handleClick = async(city)=>{
              if(city){
                 const {data} = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${city}&language=en-us&details=true`)
-                console.log(data)
-                const locationKey = data[0].Key;
-                const cityName = data[0].LocalizedName;
-                const administrativeArea = data[0].AdministrativeArea.LocalizedName;
-                const country = data[0].Country.LocalizedName;
-                if(locationKey){
+                if(data.length !== 0){
+                    console.log(data)
+                    const locationKey = data[0].Key;
+                    const cityName = data[0].LocalizedName;
+                    const administrativeArea = data[0].AdministrativeArea.LocalizedName;
+                    const country = data[0].Country.LocalizedName;
                     cityFound({
                         locationKey,cityName,administrativeArea, country
-                    })
-                }else{
-                    alert("Sorry, the city you entered is not available!")
-                }
+                    }) 
+                 }else{
+                        setErrorMessage("Sorry, the city you entered is not available!")
+                    }
               
             }else{
-                alert("Please enter a city name!")
+                setErrorMessage("Please enter a city name!")
             }
           
             
@@ -43,7 +44,9 @@ const GetLocation = ({cityFound}) => {
     return (
         <Fragment>
             <label htmlFor="location">Enter the city name here</label><br/>
-            <input type="text" id = "location" value={location} onChange={handleChange} placeholder = 'eg.Sydney'/><br/>      
+            <input type="text" id = "location" value={location} onChange={handleChange} placeholder = 'eg.Sydney'/>
+            <div className = "error-message">{errorMessage}</div>    
+
             {/* <span className="searchIcon"><SearchIcon /></span>     */}
             <button onClick={()=>handleClick(location)}>SEARCH</button>
 
