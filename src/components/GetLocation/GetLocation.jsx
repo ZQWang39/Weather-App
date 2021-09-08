@@ -30,9 +30,13 @@ const GetLocation = ({cityFound}) => {
                     cityFound({
                         locationKey,cityName,administrativeArea, country
                     }) 
+                    setlocation('')  
+                    setCoordinates('')
+                    setErrorMessage('')
                  }else{
                         setErrorMessage("Sorry, the city you entered is not available!")
-                    }            
+                    } 
+                     
             }else{
                 setErrorMessage("Please enter a city name!")
             }  

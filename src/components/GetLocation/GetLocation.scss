@@ -2,7 +2,7 @@
     .input{
       
         .location-input{
-            width:28rem;
+            width:15rem;
             height:2rem;
             font-size:1rem;
             text-indent: 0.2rem;
@@ -16,8 +16,6 @@
             width:auto;
             height:2rem;
             background-color:rgba(170, 165, 165, 0.397);
-            overflow:hidden;
-            overflow-y: auto;
             cursor: pointer;
             &:hover{
                 background-color: rgba(170, 165, 165, 0.753);
