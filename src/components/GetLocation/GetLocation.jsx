@@ -3,6 +3,7 @@ import React, {Fragment, useState} from 'react'
 import axios from 'axios'
 import './GetLocation.scss'
 // import SearchIcon from '@material-ui/icons/Search';
+import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete'
 
 const GetLocation = ({cityFound}) => {
 
@@ -12,11 +13,9 @@ const GetLocation = ({cityFound}) => {
     const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
     const handleChange = (e)=>{
-        setlocation(e.target.value);
-       
+        setlocation(e.target.value);    
     }
     
-
     const handleClick = async(city)=>{
              if(city){
                 const {data} = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${city}&language=en-us&details=true`)
@@ -42,15 +41,17 @@ const GetLocation = ({cityFound}) => {
     
 
     return (
-        <Fragment>
-            <label htmlFor="location">Enter the city name here</label><br/>
-            <input type="text" id = "location" value={location} onChange={handleChange} placeholder = 'eg.Sydney'/>
-            <div className = "error-message">{errorMessage}</div>    
+        // <Fragment>
+        //     <label htmlFor="location">Enter the city name here</label><br/>
+        //     <input type="text" id = "location" value={location} onChange={handleChange} placeholder = 'eg.Sydney'/>
+        //     <div className = "error-message">{errorMessage}</div>    
 
-            {/* <span className="searchIcon"><SearchIcon /></span>     */}
-            <button onClick={()=>handleClick(location)}>SEARCH</button>
+        //     {/* <span className="searchIcon"><SearchIcon /></span>     */}
+        //     <button onClick={()=>handleClick(location)}>SEARCH</button>
 
-        </Fragment>
+        // </Fragment>
+        <div>
+        </div>
     )
 }
 
