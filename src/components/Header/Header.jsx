@@ -1,12 +1,12 @@
-import React from 'react'
-import './Header.scss'
+import React from "react";
+import "./Header.scss";
 
 const Header = () => {
-    return (
-        <header >
-            <h1>Weather App</h1>
-        </header>
-    )
-}
+  return (
+    <header>
+      <h1>Weather App</h1>
+    </header>
+  );
+};
 
-export default Header
+export default Header;
