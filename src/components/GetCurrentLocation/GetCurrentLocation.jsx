@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import GetLatLng from "./GetLatLng.jsx";
@@ -10,16 +9,34 @@ const GetCurrentLocation = ({ currentLocation }) => {
     setCoordinates(latLng);
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (coordinates.lat && coordinates.lng) {
-      const { data } = await axios.get(
-        `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${coordinates.lat}%2C${coordinates.lng}&language=en-us&details=true&toplevel=false`
-      );
-      const locationKey = data.Key;
-      const locationName = data.LocalizedName;
-      currentLocation({ locationKey, locationName });
+      axios
+        .get(
+          `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${coordinates.lat}%2C${coordinates.lng}&language=en-us&details=true&toplevel=false`
+        )
+        .then((res) => {
+          const data = res.data;
+          const locationKey = data.Key;
+          const locationName = data.LocalizedName;
+          currentLocation({ locationKey, locationName });
+        });
     }
-  }, [coordinates]);
+  }, [coordinates.lat, coordinates.lng, apiKey, currentLocation]);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     if (coordinates.lat && coordinates.lng) {
+  //       const { data } = await axios.get(
+  //         `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${coordinates.lat}%2C${coordinates.lng}&language=en-us&details=true&toplevel=false`
+  //       );
+  //       const locationKey = data.Key;
+  //       const locationName = data.LocalizedName;
+  //       currentLocation({ locationKey, locationName });
+  //     }
+  //   }
+  //   fetchData();
+  // }, [coordinates.lat, coordinates.lng, apiKey, currentLocation]);
 
   return (
     <div>

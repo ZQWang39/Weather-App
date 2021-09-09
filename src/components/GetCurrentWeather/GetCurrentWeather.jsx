@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import "./GetCurrentWeather.scss";
 import GetCurrentLocation from "../GetCurrentLocation/GetCurrentLocation";
@@ -20,21 +20,26 @@ const GetCurrentWeather = () => {
     return numString.length === 1 ? "0" + numString : numString;
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (locationKey) {
-      const { data } = await axios.get(
-        `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${locationKey}?apikey=${apiKey}&language=en-us&details=true&metric=true`
-      );
-      const icon = formatIcon(data.DailyForecasts[0].Day.Icon);
-      const weather = data.DailyForecasts[0].Day.IconPhrase;
-      const rain = `${data.DailyForecasts[0].Day.Rain.Value} mm`;
-      const wind = `${data.DailyForecasts[0].Day.Wind.Speed.Value} km/h`;
-      const max = `${data.DailyForecasts[0].Temperature.Maximum.Value}℃`;
-      const min = `${data.DailyForecasts[0].Temperature.Minimum.Value}℃`;
-      const weatherData = { icon, weather, rain, wind, max, min };
-      setCurrentWeather(weatherData);
+      axios
+        .get(
+          `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${locationKey}?apikey=${apiKey}&language=en-us&details=true&metric=true`
+        )
+        .then((res) => {
+          const data = res.data;
+          const icon = formatIcon(data.DailyForecasts[0].Day.Icon);
+          const weather = data.DailyForecasts[0].Day.IconPhrase;
+          const rain = `${data.DailyForecasts[0].Day.Rain.Value} mm`;
+          const wind = `${data.DailyForecasts[0].Day.Wind.Speed.Value} km/h`;
+          const max = `${data.DailyForecasts[0].Temperature.Maximum.Value}℃`;
+          const min = `${data.DailyForecasts[0].Temperature.Minimum.Value}℃`;
+          const weatherData = { icon, weather, rain, wind, max, min };
+
+          setCurrentWeather(weatherData);
+        });
     }
-  }, [locationKey]);
+  }, [locationKey, apiKey]);
 
   return (
     <div className="container">

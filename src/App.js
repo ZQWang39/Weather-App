@@ -1,8 +1,8 @@
 import "./App.scss";
 import GetWeather from "./components/GetWeather/GetWeather.jsx";
-import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import GetCurrentWeather from "./components/GetCurrentWeather/GetCurrentWeather.jsx";
+import Header from "components/Header/Header";
 
 function App() {
   return (

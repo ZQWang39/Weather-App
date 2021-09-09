@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import GetLocation from "../GetLocation/GetLocation";
 import axios from "axios";
@@ -17,15 +18,19 @@ const GetWeather = () => {
     );
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (locationKey) {
-      const { data } = await axios.get(
-        `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}&language=en-us&details=true&metric=true`
-      );
-      const formatedWeatherData = formatWeatherData(data.DailyForecasts);
-      setWeatherData(formatedWeatherData);
+      axios
+        .get(
+          `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}&language=en-us&details=true&metric=true`
+        )
+        .then((res) => {
+          const data = res.data;
+          const formatedWeatherData = formatWeatherData(data.DailyForecasts);
+          setWeatherData(formatedWeatherData);
+        });
     }
-  }, [locationKey]);
+  }, [locationKey, apiKey]);
 
   const formatIcon = (num) => {
     const numString = num.toString();
