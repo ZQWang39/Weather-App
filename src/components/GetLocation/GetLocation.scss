@@ -1,46 +1,46 @@
-@import '../../variable.scss';
-.container{
-    width:100%;
-        .location-input{
-            width:80%;
-            height:2rem;
-            font-size:1rem;
-            text-indent: 0.2rem;
-            border-radius: 0.3rem;  
-            outline: none;
-            border:none;  
-        }
-        .suggestion-container{
-            margin-top:0;
-        .suggestion{
-            width:90%;
-            margin-top:0;
-            list-style: none;
-            line-height: 1.2rem;
-            padding-top: 0.5rem;
-            height:auto;
-            background-color:$background-color;
-            cursor: pointer;
-            &:hover{
-                background-color: $background-color-hover;
-            }
-         }
-       }
-        .error{
-            color:$error-colcor;
-            margin: 1rem auto;
-            font-weight: bold;
-        }
-    
-        button{
-            padding:0.5rem 1.5rem;
-            background-color:$button-color;
-            color:$header;
-            cursor: pointer;
-            border:none;
-            border-radius: 0.4rem;
-            &:hover{
-                background-color:$text-color
-            }
-        }
+@import "../../variable.scss";
+.container {
+  width: 100%;
+  .location-input {
+    width: 80%;
+    height: 2rem;
+    font-size: 1rem;
+    text-indent: 0.2rem;
+    border-radius: 0.3rem;
+    outline: none;
+    border: none;
+  }
+  .suggestion-container {
+    margin-top: 0;
+    .suggestion {
+      width: 90%;
+      margin-top: 0;
+      list-style: none;
+      line-height: 1.2rem;
+      padding-top: 0.5rem;
+      height: auto;
+      background-color: $background-color;
+      cursor: pointer;
+      &:hover {
+        background-color: $background-color-hover;
+      }
     }
+  }
+  .error {
+    color: $error-colcor;
+    margin: 1rem auto;
+    font-weight: bold;
+  }
+
+  button {
+    padding: 0.5rem 1.5rem;
+    background-color: $button-color;
+    color: $header;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.4rem;
+    &:hover {
+      background-color: $text-color;
+    }
+  }
+}

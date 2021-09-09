@@ -1,34 +1,34 @@
-@import '../../variable.scss';
-.dashboard{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    .input{
-        width: 100%;
+@import "../../variable.scss";
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .input {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+    h2 {
+      color: $header;
+    }
+  }
+  .display-weather {
+    width: 100%;
+    margin-bottom: 3rem;
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      margin: auto;
+      list-style: none;
+      width: 75%;
+      li {
+        width: 8rem;
+        height: 8rem;
+        padding-top: 0.3rem;
         text-align: center;
-        margin-top: 0.5rem;
-        h2{
-            color:$header;
-        }
+        background-color: $background-color;
+        border-radius: 0.5rem;
+      }
     }
-    .display-weather{
-        width:100%;
-        margin-bottom: 3rem;
-        ul{
-            display:flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-            margin:auto;
-            list-style: none;
-            width:75%;
-            li{
-                width:8rem;
-                height:8rem;
-                padding-top: 0.3rem;
-                text-align:center;
-                background-color: $background-color;
-                border-radius: 0.5rem;
-            }
-        }
-    }
+  }
 }
